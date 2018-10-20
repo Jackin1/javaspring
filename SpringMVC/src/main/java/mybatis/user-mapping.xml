@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customernamespace"> <!-- userinformation은 mvc-config.xml에서 정의한 Alias명 -->
+	<insert id="insertCustomer" parameterType="customer">
+		<![CDATA[
+		INSERT INTO TB_CUSTOMER(ID,PASSWORD,NAME)
+		VALUES(#{id}, #{password}, #{name})
+		]]>
+	</insert>
+	
+	<select id="selectCustomer" resultType="customer" >
+		<![CDATA[
+		SELECT * FROM TB_CUSTOMER
+		]]>
+	</select>
+	
+	<select id="searchCustomerUsingId" parameterType="string" resultType="customer" >
+		<![CDATA[
+		SELECT * FROM TB_CUSTOMER
+		WHERE ID=#{id}
+		]]>
+	</select>
+</mapper>
