@@ -8,38 +8,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import customer.dao.CustomerDao;
-import customer.vo.CustomerVO;
+import customer.dao.BoardDao;
+import customer.vo.BoardVO;
 
 @Controller
-public class CustomerController {
+public class BoardController {
 	
-	CustomerDao customerDao;
+	BoardDao boardDao;
 	
 	@Autowired
-	public CustomerController(CustomerDao customerDao) {
+	public BoardController(BoardDao boardDao) {
 		super();
-		this.customerDao = customerDao;
+		this.boardDao = boardDao;
 	}
 
-	@RequestMapping(value="selectCustomer.do")
+/*	@RequestMapping(value="selectBoard.do")
 	public ModelAndView selectCustomer() {
-		ModelAndView mav=new ModelAndView("list", "list", customerDao.selectCustomer());
+		ModelAndView mav=new ModelAndView("list", "list", boardDao.selectBoard());
 		return mav;
 	}
-	
+	*/
 	@RequestMapping(value="/customerInsert.do",method=RequestMethod.POST)
-	public ModelAndView customerInsert(@ModelAttribute CustomerVO customer) {
-		if(customerDao.insertCustomer(customer)>0) {
-			return new ModelAndView("result", "id", customer.getId());
+	public ModelAndView boardInsert(@ModelAttribute BoardVO board) {
+		if(boardDao.insertBoard(board)>0) {
+			return new ModelAndView("result", "id", board.getBoard_id());
 		}else {
 			return new ModelAndView("result");
 		}
 	}
-	
+	/*
 	@RequestMapping(value="/customerSearch.do", method=RequestMethod.POST)
 	public ModelAndView customerSearch(@ModelAttribute CustomerVO customer) {
 		return new ModelAndView("view", "customer", customerDao.searchCustomer(customer.getId()));
-	}
+	}*/
 	
 }

@@ -6,6 +6,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="customer.vo.CustomerVO" alias="customer"/>
+		<typeAlias type="customer.vo.BoardVO" alias="board"/>
 	</typeAliases>
 	
 	<!-- 쿼리문 -->
