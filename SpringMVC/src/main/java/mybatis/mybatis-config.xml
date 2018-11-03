@@ -12,5 +12,6 @@
 	<!-- 쿼리문 -->
 	<mappers>
 		<mapper resource="mybatis/user-mapping.xml"/>
+		<mapper resource="mybatis/board-mapping.xml"/>
 	</mappers>
 </configuration>

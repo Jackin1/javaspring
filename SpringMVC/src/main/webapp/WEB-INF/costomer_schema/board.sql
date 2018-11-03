@@ -13,3 +13,5 @@ reg_date date DEFAULT SYSDATE NOT NULL);
 
 select * from tab;
 select * from tb_board;
+
+INSERT INTO TB_BOARD(BOARD_ID,USER_ID,USER_NAME,SUBJECT,CONTENTS,HITS) VALUES(BOARD_SEQ.NEXTVAL, 'aaa', '에이에이에이', '에이의글제목', '에이의 글내용', 0)

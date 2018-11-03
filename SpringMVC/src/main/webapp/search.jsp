@@ -6,7 +6,7 @@
 <body>
 <h3>검색하려는 고객의 ID 를 입력해 주세요...</h3>
 <hr>
-<form method="post" action="customerSearch.do">
+<form method="post" action="searchCustomer.do">
 ID <input type="text" name="id">
 <input type="submit" value="검색">
 </form>

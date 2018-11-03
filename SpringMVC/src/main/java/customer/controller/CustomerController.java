@@ -24,22 +24,22 @@ public class CustomerController {
 
 	@RequestMapping(value="selectCustomer.do")
 	public ModelAndView selectCustomer() {
-		ModelAndView mav=new ModelAndView("list", "list", customerDao.selectCustomer());
+		ModelAndView mav=new ModelAndView("customer/list", "list", customerDao.selectCustomer());
 		return mav;
 	}
 	
-	@RequestMapping(value="/customerInsert.do",method=RequestMethod.POST)
+	@RequestMapping(value="insertCustomer.do",method=RequestMethod.POST)
 	public ModelAndView customerInsert(@ModelAttribute CustomerVO customer) {
 		if(customerDao.insertCustomer(customer)>0) {
-			return new ModelAndView("result", "id", customer.getId());
+			return new ModelAndView("customer/result", "id", customer.getId());
 		}else {
-			return new ModelAndView("result");
+			return new ModelAndView("customer/result");
 		}
 	}
 	
-	@RequestMapping(value="/customerSearch.do", method=RequestMethod.POST)
+	@RequestMapping(value="searchCustomer.do", method=RequestMethod.POST)
 	public ModelAndView customerSearch(@ModelAttribute CustomerVO customer) {
-		return new ModelAndView("view", "customer", customerDao.searchCustomer(customer.getId()));
+		return new ModelAndView("customer/view", "customer", customerDao.searchCustomer(customer.getId()));
 	}
 	
 }

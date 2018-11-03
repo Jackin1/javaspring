@@ -22,18 +22,26 @@ public class BoardController {
 		this.boardDao = boardDao;
 	}
 
-/*	@RequestMapping(value="selectBoard.do")
-	public ModelAndView selectCustomer() {
-		ModelAndView mav=new ModelAndView("list", "list", boardDao.selectBoard());
+	@RequestMapping(value="selectBoard.do")
+	public ModelAndView selectBoard() {
+		ModelAndView mav=new ModelAndView("/board/list", "list", boardDao.selectBoard());
 		return mav;
 	}
-	*/
-	@RequestMapping(value="/customerInsert.do",method=RequestMethod.POST)
-	public ModelAndView boardInsert(@ModelAttribute BoardVO board) {
+
+	@RequestMapping(value="insertBoard.do",method=RequestMethod.GET)
+	public ModelAndView insertBoard(@ModelAttribute BoardVO board) {
+
+		return new ModelAndView("board/insert");
+
+	}
+	
+	@RequestMapping(value="insertBoardProc.do",method=RequestMethod.POST)
+	public ModelAndView insertBoardProc(@ModelAttribute BoardVO board) {
+		System.out.println(board.getUser_id()+", "+board.getUser_name()+", "+board.getSubject()+", "+board.getContents());
 		if(boardDao.insertBoard(board)>0) {
-			return new ModelAndView("result", "id", board.getBoard_id());
+			return selectBoard();
 		}else {
-			return new ModelAndView("result");
+			return new ModelAndView("board/insert", "board", "");
 		}
 	}
 	/*

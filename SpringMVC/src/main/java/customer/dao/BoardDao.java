@@ -10,21 +10,21 @@ import org.springframework.stereotype.Repository;
 import customer.vo.BoardVO;
 import customer.vo.CustomerVO;
 
-@Repository("customerDao")
+@Repository("boardDao")
 public class BoardDao {
 	@Autowired
 	private SqlSessionFactory factory;
 	
-	public List<CustomerVO> selectCustomer() {
-		return factory.openSession().selectList("customernamespace.selectCustomer");
+	public List<BoardVO> selectBoard() {
+		return factory.openSession().selectList("boardnamespace.selectBoard");
 	}
-	public CustomerVO searchCustomer(String id) {
-		return factory.openSession().selectOne("customernamespace.searchCustomerUsingId", id);
+	public BoardVO searchCustomer(String id) {
+		return factory.openSession().selectOne("boardnamespace.searchCustomerUsingId", id);
 	}
 
 	public int insertBoard(BoardVO board) {
 		try {
-		return factory.openSession().update("customernamespace.insertBoard", board);
+		return factory.openSession().update("boardnamespace.insertBoard", board);
 		}catch(Exception e) {
 			if(e instanceof PersistenceException) {
 				return 0;

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardnamespace"> <!-- userinformation은 mvc-config.xml에서 정의한 Alias명 -->
+	
+	<select id="selectBoard" resultType="board" >
+		<![CDATA[
+		SELECT * FROM TB_BOARD
+		]]>
+	</select>
+	
+	<select id="searchCustomerUsingId" parameterType="string" resultType="board" >
+		<![CDATA[
+		SELECT * FROM TB_BOARD
+		WHERE ID=#{id}
+		]]>
+	</select>
+	
+	<insert id="insertBoard" parameterType="board">
+		<![CDATA[
+		INSERT INTO TB_BOARD(BOARD_ID,USER_ID,USER_NAME,SUBJECT,CONTENTS,HITS)
+		VALUES(BOARD_SEQ.NEXTVAL, #{user_id}, #{user_name}, #{subject}, #{contents}, 0)
+		]]>
+	</insert>
+</mapper>
